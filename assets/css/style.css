@@ -1,0 +1,72 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+div label {
+  vertical-align: middle;
+}
+
+form {
+  width: 70%;
+  margin: 0 auto;
+}
+
+div {
+  margin: 24px;
+}
+
+.flex-container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
+}
+
+.flex-container>label {
+  width: 20%;
+  vertical-align: middle;
+}
+
+.flex-container>input[type="text"],
+.flex-container>textarea {
+  width: 50%;
+}
+
+.helper {
+  margin-left: 10px;
+  color: #f00;
+  font-size: 12px;
+  display: none;
+}
+
+textarea {
+  resize: none;
+}
+
+.form-control {
+  text-align: center;
+}
+
+table, th, td {
+  margin: 0 auto;
+  padding: 6px 24px;
+  border: 1px solid black;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+table {
+  display: none;
+}
+
+input[type=radio] {
+  margin: 3px 12px 3px 24px;
+}
+
+input[type=radio]:first-of-type {
+  margin-left: 0;
+}
