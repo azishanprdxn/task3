@@ -4,6 +4,16 @@
 
 body {
   font-family: Arial, Helvetica, sans-serif;
+  background-color: rgba(0, 0, 0, .05);
+}
+
+div {
+  margin: 24px;
+}
+
+fieldset {
+  background-color: #fff;
+  border-radius: 10px;
 }
 
 div label {
@@ -15,8 +25,27 @@ form {
   margin: 0 auto;
 }
 
-div {
-  margin: 24px;
+input[type="radio"],
+input[type="checkbox"],
+button {
+  cursor: pointer;
+}
+
+.form-control button {
+  padding: 8px 24px;
+  background-color: rgba(0, 0, 0, .8);
+  border: none;
+  border-radius: 12px;
+  color: #fff;
+  cursor: pointer;
+  outline: none;
+}
+
+.form-control button:hover {
+  margin: -2px;
+  border: 2px solid rgba(0, 0, 0, .8);
+  background-color: transparent;
+  color: #000;
 }
 
 .flex-container {
