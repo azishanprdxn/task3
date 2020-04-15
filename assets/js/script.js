@@ -70,17 +70,15 @@ function onFormSubmit() {
     return;
   } else { // Run this if all the data is filled
     alert("Thank You!");
-    // Displays the datatable when an entry is made
-    document.getElementsByTagName('table')[0].style.display = "table";
     document.getElementById('data').innerHTML +=
-      "<tr>" +
-      "<td>" + firstName + "</td>" +
-      "<td>" + lastName + "</td>" +
-      "<td>" + gender + "</td>" +
-      "<td>" + address + "</td>" +
-      "<td>" + "<button type='button' id='editData' value='Edit' onclick='onEdit(this)'>Edit</button>" + "</td>" +
-      "<td>" + "<button type='button' id='deleteData' value='Delete' onclick='onDelete()'>Delete</button>" + "</td>" +
-      "</tr>";
+      "<ul>" +
+      "<li>" + firstName + "</li>" +
+      "<li>" + lastName + "</li>" +
+      "<li>" + gender + "</li>" +
+      "<li>" + address + "</li>" +
+      "<li>" + "<button type='button' id='editData' value='Edit' onclick='onEdit(this)'>Edit</button>" + "</li>" +
+      "<li>" + "<button type='button' id='deleteData' value='Delete' onclick='onDelete()'>Delete</button>" + "</li>" +
+      "</ul>";
 
     // Reset the current form data
     document.querySelector('form').reset();
@@ -88,31 +86,27 @@ function onFormSubmit() {
 }
 
 // On Edit Function
-function onEdit(tableData) {
+function onEdit(rowData) {
   // Get data into input boxes
-  var selectedRow = tableData.parentElement.parentElement;
-  document.getElementById("first-name").value = selectedRow.cells[0].innerHTML;
-  document.getElementById("last-name").value = selectedRow.cells[1].innerHTML;
-  if (selectedRow.cells[2].innerHTML == "Male") {
+  var items = document.querySelectorAll('#data ul>li');
+  document.getElementById("first-name").value = items[0].innerHTML;
+  document.getElementById("last-name").value = items[1].innerHTML;
+  if (items[2].innerHTML == "Male") {
     document.getElementById("male").checked = true;
   } else {
     document.getElementById("female").checked = true;
   }
-  document.getElementById("address").value = selectedRow.cells[3].innerHTML;
+  document.getElementById("address").value = items[3].innerHTML;
   document.getElementById("terms").checked = true;
 
   // Remove that particular row
-  var tableBody = document.querySelector('tbody');
-  var tableRow = document.querySelectorAll("tbody tr");
+  var tableBody = document.querySelector('#data');
+  var tableRow = document.querySelectorAll("#data ul");
   var length = tableRow.length;
   for (var i = 0; i < length; i++) {
     tableRow[i].onclick = function () {
       tableBody.removeChild(this);
     }
-  }
-  if (length-1 == 0) {
-    // Hides the datatable when there is 0 entry
-    document.getElementsByTagName('table')[0].style.display = "none";
   }
 }
 
@@ -120,17 +114,13 @@ function onEdit(tableData) {
 function onDelete() {
   var isConfirmed = confirm("Do you want to delete this entry?");
   if (isConfirmed) {
-    var tableBody = document.querySelector('tbody');
-    var tableRow = document.querySelectorAll("tbody tr");
+    var tableBody = document.querySelector('#data');
+    var tableRow = document.querySelectorAll("#data ul");
     var length = tableRow.length;
     for (var i = 0; i < length; i++) {
       tableRow[i].onclick = function () {
         tableBody.removeChild(this);
       }
-    }
-    if (length-1 == 0) {
-      // Hides the datatable when there is 0 entry
-      document.getElementsByTagName('table')[0].style.display = "none";
     }
   }
 } 
